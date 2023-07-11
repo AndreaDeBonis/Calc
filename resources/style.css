@@ -1,0 +1,32 @@
+#calculator {
+    width: 500px;
+    height: 800px;
+    margin: 500px auto;
+    text-align: center;
+    align-content: center;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+#button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#display{
+    border: 1px solid;
+    flex: auto;
+    max-height: 30px;
+}
+
+.line {
+    flex: auto;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+button {
+
+}
