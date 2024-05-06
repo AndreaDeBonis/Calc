@@ -1,3 +1,5 @@
+let display = document.getElementById("display")
+
 let a = "0"
 let b = "0"
 let operator
@@ -14,11 +16,11 @@ document.addEventListener('click', e => {
     if (!isNaN(e.target.id)) {
         if (!state) {
             a = a + e.target.id
-            document.getElementById("display").innerHTML= a
+            display.innerHTML = a
         }
         else {
             b = b + e.target.id
-            document.getElementById("display").innerHTML= b
+            display.innerHTML = b
         }
 
         
@@ -26,7 +28,7 @@ document.addEventListener('click', e => {
     if (e.target.id == "+" || e.target.id == "*" || e.target.id == "/" || e.target.id == "-") {
         state = !state
         operator = e.target.id
-        document.getElementById("display").innerHTML= "0"
+        display.innerHTML= "0"
     }
 
     else if (e.target.id == "="){
@@ -34,7 +36,7 @@ document.addEventListener('click', e => {
         
         //    if (operator=="+") {
    //         result = add(a,b)
-        document.getElementById("display").innerHTML = result
+        display.innerHTML = result
     //    }
         a = result
         b = ""
