@@ -18,13 +18,13 @@ document.addEventListener('click', e => {
             a = a + e.target.id
             display.innerHTML = a
         }
+
         else {
             b = b + e.target.id
             display.innerHTML = b
-        }
-
-        
+        }        
     }
+
     if (e.target.id == "+" || e.target.id == "*" || e.target.id == "/" || e.target.id == "-") {
         state = !state
         operator = e.target.id
@@ -58,4 +58,11 @@ function divide (a,b) {
 
 function subtract (a,b) {
     return parseInt(a)-parseInt(b)
+}
+
+function reset () {
+    a = "0"
+    b = "0"
+    state = false
+    result.innerHTML = 0
 }
