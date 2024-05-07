@@ -4,43 +4,40 @@ let a = "0"
 let b = "0"
 let operator
 let state = false
-let operations = {
+const operations = {
     "+" : add,
     "*" : multiply,
     "/" : divide,
     "-" : subtract
 }
 
-document.addEventListener('click', e => {
-
+document.getElementById("button-container").addEventListener('click', e => {
+    
     if (!isNaN(e.target.id)) {
         if (!state) {
             a = a + e.target.id
-            display.innerHTML = a
+            display.innerHTML = parseFloat(a)
         }
 
         else {
             b = b + e.target.id
-            display.innerHTML = b
+            display.innerHTML = parseInt(b)
         }        
     }
 
-    if (e.target.id == "+" || e.target.id == "*" || e.target.id == "/" || e.target.id == "-") {
+    else if (e.target.id == "+" || e.target.id == "*" || e.target.id == "/" || e.target.id == "-") {
+        
         state = !state
         operator = e.target.id
         display.innerHTML= "0"
     }
 
-    else if (e.target.id == "="){
-        let result = operations[operator](a,b)
-        
-        //    if (operator=="+") {
-   //         result = add(a,b)
-        display.innerHTML = result
-    //    }
-        a = result
-        b = ""
-        state = !state
+    else if (e.target.id == "=") {
+        getResult()
+    }
+
+    else if (e.target.id == "reset") {
+        reset()
     }
 })
 
@@ -64,5 +61,19 @@ function reset () {
     a = "0"
     b = "0"
     state = false
-    result.innerHTML = 0
+    operator = "+"
+    display.innerHTML = a
+}
+
+function getResult () {
+    let result = operations[operator](a,b)
+        if (isNaN(result) || (result == Infinity)) {
+            alert("invalid operation")
+        }
+        else {
+            display.innerHTML = result
+            a = result
+            b = ""
+            state = !state
+        }
 }
